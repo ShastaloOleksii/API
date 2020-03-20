@@ -4,7 +4,6 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import models.User;
 import org.json.JSONException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -25,7 +24,6 @@ public class RestAssuredTest extends Father {
     public void checkGenderUserId365() throws JSONException {
         Response response = when().get(BASEURLFIRSTPART + OTTO + BASEURLPARTTWO + TOKEN);
         response.prettyPeek();
-        User user = response.body().as(User.class);
         response.then().statusCode(200)
                 .and()
                 .assertThat()
@@ -46,7 +44,6 @@ public class RestAssuredTest extends Father {
     public void checkGenderUserId366() throws JSONException {
         Response response = when().get(BASEURLFIRSTPART + KENYON + BASEURLPARTTWO + TOKEN);
         response.prettyPeek();
-        User user = response.body().as(User.class);
         response.then().statusCode(200)
                 .and()
                 .assertThat()
