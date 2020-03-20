@@ -65,7 +65,7 @@ public class RestAssuredTest extends Father {
     public void postCreateUserFemale() {
         RequestSpecification request = RestAssured.given();
         request.header("Content-Type", "application/json");
-        request.header("Authorization", "Bearer Jgl4xhr9F3jH8v_GZQbE5pxaVr-VNB0PC3A0");
+        request.header("Authorization", BEARER);
         request.body(femaleData);
         Response response = request.post(BASEURLFIRSTPART).prettyPeek();
         int statusCode = response.getStatusCode();
@@ -77,7 +77,7 @@ public class RestAssuredTest extends Father {
     public void postCreateUserMale() {
         RequestSpecification request = RestAssured.given();
         request.header("Content-Type", "application/json");
-        request.header("Authorization", "Bearer Jgl4xhr9F3jH8v_GZQbE5pxaVr-VNB0PC3A0");
+        request.header("Authorization", BEARER);
         request.body(maleData);
         Response response = request.post(BASEURLFIRSTPART).prettyPeek();
         int statusCode = response.getStatusCode();
@@ -92,7 +92,7 @@ public class RestAssuredTest extends Father {
         Response response = null;
         try {
             response = RestAssured.given()
-                    .contentType(ContentType.JSON).header("Authorization", "Bearer Jgl4xhr9F3jH8v_GZQbE5pxaVr-VNB0PC3A0")
+                    .contentType(ContentType.JSON).header("Authorization", BEARER)
                     .delete("/360").prettyPeek();
         } catch (Exception e) {
             e.printStackTrace();
@@ -114,7 +114,7 @@ public class RestAssuredTest extends Father {
                 RestAssured.given().body(map)
                         .when()
                         .contentType(ContentType.JSON)
-                        .header("Authorization", "Bearer Jgl4xhr9F3jH8v_GZQbE5pxaVr-VNB0PC3A0")
+                        .header("Authorization", BEARER)
                         .put("/369").prettyPeek();
         int statusCode = response.getStatusCode();
         Assert.assertEquals(statusCode, 200);
@@ -135,12 +135,27 @@ public class RestAssuredTest extends Father {
                 RestAssured.given().body(map)
                         .when()
                         .contentType(ContentType.JSON)
-                        .header("Authorization", "Bearer Jgl4xhr9F3jH8v_GZQbE5pxaVr-VNB0PC3A0")
+                        .header("Authorization", BEARER)
                         .put("/369").prettyPeek();
         int statusCode = response.getStatusCode();
         Assert.assertEquals(statusCode, 200);
 
     }
 
+    @Test(description = "DELETE")
+    public void deleteUser373() {
+        RestAssured.baseURI = BASEURLFIRSTPART;
+
+        Response response = null;
+        try {
+            response = RestAssured.given()
+                    .contentType(ContentType.JSON).header("Authorization", BEARER)
+                    .delete("/373").prettyPeek();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        int statusCode = response.getStatusCode();
+        Assert.assertEquals(statusCode, 204);
+    }
 
 }
